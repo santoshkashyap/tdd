@@ -3,7 +3,7 @@ package com.explore;
 public class Dollar {
 
 
-    int amount = 0;
+    private int amount = 0;
 
     public Dollar(int amount) {
         this.amount = amount;
@@ -13,5 +13,9 @@ public class Dollar {
         return new Dollar(this.amount * value);
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        Dollar dollar = (Dollar) obj;
+        return this.amount == dollar.amount;
+    }
 }
