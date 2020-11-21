@@ -1,7 +1,6 @@
 package com.explore;
 
 
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -78,4 +77,19 @@ public class MoneyTest {
         Money result = bank.reduce(Money.dollar(1), "USD");
         assertEquals(Money.dollar(1), result);
     }
+
+    @Test
+    void testReduceMoneyDifferentCurrency() {
+        Bank bank = new Bank();
+        bank.addRate("INR", "USD", 70);
+        Money result = bank.reduce(Money.rupee(140), "USD");
+        assertEquals(Money.dollar(2), result);
+    }
+
+    @Test
+    void testIdentityRate() {
+        assertEquals(1, new Bank().rate("USD", "USD"));
+        assertEquals(1, new Bank().rate("INR", "INR"));
+    }
+
 }
