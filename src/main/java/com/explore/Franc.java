@@ -1,21 +1,14 @@
 package com.explore;
 
-public class Franc {
+public class Franc extends Money {
 
-
-    private int amount = 0;
 
     public Franc(int amount) {
         this.amount = amount;
     }
 
-    Franc times(int value) {
+    Money times(int value) {
         return new Franc(this.amount * value);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Franc franc = (Franc) obj;
-        return this.amount == franc.amount;
-    }
 }
