@@ -22,19 +22,25 @@ public class MoneyTest {
 
     @Test
     void testMultiplicationFranc() {
-        Money five =  Money.franc(5);
-        assertEquals( Money.franc(10), five.times(2));
-        assertEquals( Money.franc(15), five.times(3));
+        Money five =  Money.rupee(5);
+        assertEquals( Money.rupee(10), five.times(2));
+        assertEquals( Money.rupee(15), five.times(3));
     }
 
     @Test
     void testEqualityFranc() {
-        assertEquals( Money.franc(5),  Money.franc(5));
-        assertNotEquals( Money.franc(5),  Money.franc(10));
+        assertEquals( Money.rupee(5),  Money.rupee(5));
+        assertNotEquals( Money.rupee(5),  Money.rupee(10));
     }
 
     @Test
     void testInEquality() {
-        assertNotEquals( Money.dollar(5),  Money.franc(5));
+        assertNotEquals( Money.dollar(5),  Money.rupee(5));
+    }
+
+    @Test
+    void testCurrency() {
+        assertEquals("USD", Money.dollar(5).currency());
+        assertEquals("INR", Money.rupee(5).currency());
     }
 }

@@ -3,15 +3,25 @@ package com.explore;
 public abstract class Money {
 
     protected int amount = 0;
+    protected String currency;
+
+    public Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
 
     public abstract Money times(int value);
 
-    public static Money dollar(int amount) {
-        return new Dollar(amount);
+    public String currency() {
+        return this.currency;
     }
 
-    public static Money franc(int amount) {
-        return new Franc(amount);
+    public static Money dollar(int amount) {
+        return new Dollar(amount, "USD");
+    }
+
+    public static Money rupee(int amount) {
+        return new Rupee(amount, "INR");
     }
 
 
