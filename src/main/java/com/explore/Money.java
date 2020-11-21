@@ -16,11 +16,11 @@ public class Money {
     }
 
     public static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     public static Money rupee(int amount) {
-        return new Rupee(amount, "INR");
+        return new Money(amount, "INR");
     }
 
 
