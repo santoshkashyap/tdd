@@ -6,8 +6,4 @@ public class Rupee extends Money {
         super(amount, currency);
     }
 
-    public Money times(int value) {
-        return Money.rupee(this.amount * value);
-    }
-
 }

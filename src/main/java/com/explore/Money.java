@@ -1,6 +1,6 @@
 package com.explore;
 
-public abstract class Money {
+public class Money {
 
     protected int amount = 0;
     protected String currency;
@@ -10,7 +10,6 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    public abstract Money times(int value);
 
     public String currency() {
         return this.currency;
@@ -28,9 +27,18 @@ public abstract class Money {
     @Override
     public boolean equals(Object obj) {
         Money money = (Money) obj;
-        return this.getClass().equals(obj.getClass())
-            && this.amount == money.amount;
+        return this.amount == money.amount && this.currency.equals(money.currency);
     }
 
+    public Money times(int value) {
+        return new Money(this.amount * value, this.currency);
+    }
 
+    @Override
+    public String toString() {
+        return "Money{" +
+            "amount=" + amount +
+            ", currency='" + currency + '\'' +
+            '}';
+    }
 }

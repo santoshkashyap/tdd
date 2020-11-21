@@ -7,10 +7,4 @@ public class Dollar extends Money {
         super(amount, currency);
     }
 
-
-    public Money times(int value) {
-        return Money.dollar(this.amount * value);
-    }
-
-
 }
