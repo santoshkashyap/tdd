@@ -1,6 +1,6 @@
 package com.explore;
 
-public class Money {
+public class Money implements Expression {
 
     protected int amount = 0;
     protected String currency;
@@ -23,6 +23,9 @@ public class Money {
         return new Money(amount, "INR");
     }
 
+    public Expression plus(Money newMoney) {
+        return new Sum(this, newMoney);
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -40,5 +43,10 @@ public class Money {
             "amount=" + amount +
             ", currency='" + currency + '\'' +
             '}';
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }
