@@ -94,12 +94,35 @@ public class MoneyTest {
 
     @Test
     void testAdditionMixedCurrencies() {
-        Money usd = new Money(5, "USD");
-        Money inr = new Money(140, "INR");
+        Expression usd = Money.dollar(5);
+        Expression inr = Money.rupee(140);
         Bank bank = new Bank();
         bank.addRate("INR", "USD", 70);
         Money result = bank.reduce(usd.plus(inr), "USD");
         assertEquals(Money.dollar(7), result);
 
     }
+
+    @Test
+    void testSumPlusMoney() {
+        Expression usd = Money.dollar(5);
+        Expression inr = Money.rupee(140);
+        Bank bank = new Bank();
+        bank.addRate("INR", "USD", 70);
+        Expression sum = new Sum(usd, inr).plus(usd);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(12), result);
+    }
+
+    @Test
+    void testSumTimes() {
+        Expression usd = Money.dollar(5);
+        Expression inr = Money.rupee(140);
+        Bank bank = new Bank();
+        bank.addRate("INR", "USD", 70);
+        Expression sum = new Sum(usd, inr).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(14), result);
+    }
+
 }

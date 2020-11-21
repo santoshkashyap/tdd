@@ -2,8 +2,8 @@ package com.explore;
 
 public class Money implements Expression {
 
-    protected int amount = 0;
-    protected String currency;
+    protected int amount;
+    protected final String currency;
 
     public Money(int amount, String currency) {
         this.amount = amount;
@@ -34,6 +34,7 @@ public class Money implements Expression {
         return this.amount == money.amount && this.currency.equals(money.currency);
     }
 
+    @Override
     public Expression times(int value) {
         return new Money(this.amount * value, this.currency);
     }
