@@ -23,7 +23,8 @@ public class Money implements Expression {
         return new Money(amount, "INR");
     }
 
-    public Expression plus(Money newMoney) {
+    @Override
+    public Expression plus(Expression newMoney) {
         return new Sum(this, newMoney);
     }
 
@@ -33,7 +34,7 @@ public class Money implements Expression {
         return this.amount == money.amount && this.currency.equals(money.currency);
     }
 
-    public Money times(int value) {
+    public Expression times(int value) {
         return new Money(this.amount * value, this.currency);
     }
 

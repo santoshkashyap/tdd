@@ -92,4 +92,14 @@ public class MoneyTest {
         assertEquals(1, new Bank().rate("INR", "INR"));
     }
 
+    @Test
+    void testAdditionMixedCurrencies() {
+        Money usd = new Money(5, "USD");
+        Money inr = new Money(140, "INR");
+        Bank bank = new Bank();
+        bank.addRate("INR", "USD", 70);
+        Money result = bank.reduce(usd.plus(inr), "USD");
+        assertEquals(Money.dollar(7), result);
+
+    }
 }
